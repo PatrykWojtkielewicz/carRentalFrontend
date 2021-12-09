@@ -9,37 +9,46 @@
                 <p class="pb-1 text-left text-2xl">Hasło</p>
                 <input type="password" id="password" name="password" placeholder="********" class="shadow-lg text-md p-4 w-full"/>
             </label>
+            <p v-if="error" class="text-red-500 pt-2">
+                {{ error.message }}
+            </p>
             <button @click="fetchData" name="submit" class="w-2/5 mt-8 py-2 rounded-xl bg-gray-100 hover:bg-gray-300">Zaloguj</button>
         </div>
     </div>
 </template>
 
 <script>
-    // import Vue from 'vue'
-    // import createApp from 'vue'
+    import { ref } from 'vue';
+    const axios = require('axios');
 
-    // Vue.createApp({
-    //     data() {
-    //         return {
-    //             name: 'Vue.js'
-    //         }
-    //     },
-    //     methods: {
-    //         fetchData() {
-    //             console.log("1");
-    //             let a = fetch('http://127.0.0.1:8000/api/login', {
-    //                 method: 'post',
-    //                 headers: {
-    //                     Accept: 'application/json',
-    //                 },
-    //                 body: {
-    //                     email: "abc",
-    //                     password: "def"
-    //                 }
-    //             })
-    //             console.log(a);
-    //         return a;
-    //     }
-    //     }
-    // }).mount('#event-with-method')
+    export default {
+        setup() {
+            const error = ref(null)
+            const response = ref(null)
+
+            const fetchData = () => {
+                let formEmail = document.getElementById('email').value
+                let formPassword = document.getElementById('password').value
+
+                axios.post('http://127.0.0.1:8000/api/login', {
+                    Accept: 'application/json',
+                    email: formEmail,
+                    password: formPassword   
+                })
+                .then(function (res) {
+                    response.value = res
+                    const token = response.value.data.token
+                    sessionStorage.setItem('token', token)
+                })
+                .catch(function (err) {
+                    error.value = err
+                    error.value = error.value.response.data
+                })
+            }
+            return{
+                fetchData,
+                error
+            }
+        }
+    }
 </script>

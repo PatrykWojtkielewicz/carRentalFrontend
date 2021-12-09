@@ -28,7 +28,7 @@
 <script>
     import { ref } from 'vue';
     const axios = require('axios');
-    const token = '26|EUzuPg3iIE5Z24M0QUCK7MohixRpq2opFGsUt36O';
+    const token = sessionStorage.getItem('token')
 
     export default {
         name: 'Cars',
