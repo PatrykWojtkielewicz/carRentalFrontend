@@ -17,10 +17,10 @@
             </tr>
         </table>
         <p v-if="loading">
-            Still loading...
+            Ładowanie...
         </p>
         <p v-if="error">
-            {{ error }}
+            {{ error.message }}
         </p>
     </div>
 </template>
@@ -46,6 +46,11 @@
             .then(function (response) {
                 data.value = response.data
                 loading.value = false
+                error.value = false
+            })
+            .catch(function (err) {
+                error.value = err
+                error.value = error.value.response.data
             })
             return {
                 data,

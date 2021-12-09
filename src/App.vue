@@ -10,6 +10,7 @@
                 <router-link to="/login" class="pl-8">Login</router-link>
                 <router-link to="/register" class="pl-8">Register</router-link>
                 <router-link to="/logout" class="pl-8">Logout</router-link>
+                <router-link to="/users" class="pl-8">Users</router-link>
             </p>
         </div>
     </nav>
@@ -17,4 +18,5 @@
 </template>
 
 <script>
+    
 </script>

@@ -25,6 +25,7 @@
         setup() {
             const error = ref(null)
             const response = ref(null)
+            const feedback = ref(null)
 
             const fetchData = () => {
                 let formEmail = document.getElementById('email').value
@@ -39,6 +40,8 @@
                     response.value = res
                     const token = response.value.data.token
                     sessionStorage.setItem('token', token)
+                    console.log(sessionStorage.getItem('token'))
+                    feedback.value = "Zalogowano"
                 })
                 .catch(function (err) {
                     error.value = err
@@ -47,7 +50,8 @@
             }
             return{
                 fetchData,
-                error
+                error,
+                feedback
             }
         }
     }

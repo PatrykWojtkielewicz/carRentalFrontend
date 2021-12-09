@@ -22,7 +22,10 @@
                 <input type="password" id="confirmPassword" name="confirmPassword" placeholder="********" class="shadow-lg text-md p-4 w-full"/>
             </label>
             <p v-if="error" class="text-red-500 pt-2">
-                {{ error }}
+                {{ error.results }}
+            </p>
+            <p v-if="feedback" class="text-green-500 pt-2">
+                {{ feedback }}
             </p>
             <button @click="fetchData" name="submit" class="w-2/5 mt-8 py-2 rounded-xl bg-gray-100 hover:bg-gray-300">Zarejestruj się</button>
         </div>
@@ -37,9 +40,10 @@
         setup() {
             const error = ref(null)
             const response = ref(null)
+            const feedback = ref(null)
 
             const fetchData = () => {
-                let fromName = document.getElementById('name').value
+                let formName = document.getElementById('name').value
                 let formSurname = document.getElementById('surname').value
                 let formEmail = document.getElementById('email').value
                 let formPassword = document.getElementById('password').value
@@ -47,7 +51,7 @@
 
                 axios.post('http://127.0.0.1:8000/api/register', {
                     Accept: 'application/json',
-                    name: fromName,
+                    name: formName,
                     surname: formSurname,   
                     email: formEmail,   
                     password: formPassword,   
@@ -57,16 +61,17 @@
                     response.value = res
                     const token = response.value.data.token
                     sessionStorage.setItem('token', token)
+                    feedback.value = "Zarejestrowano"
                 })
                 .catch(function (err) {
                     error.value = err
                     error.value = error.value.response.data.errors
-                    console.log(error)
                 })
             }
             return{
                 fetchData,
-                error
+                error,
+                feedback
             }
         }
     }
