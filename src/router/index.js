@@ -3,6 +3,7 @@ import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
 import Cars from '../views/Cars.vue'
+import Logout from '../views/Logout.vue'
 
 const routes = [
     {
@@ -24,6 +25,11 @@ const routes = [
         path: '/register',
         name: 'Register',
         component: Register
+    },
+    {
+        path: '/logout',
+        name: 'Logout',
+        component: Logout
     }
 ]
 
