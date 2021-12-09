@@ -12,6 +12,9 @@
             <p v-if="error" class="text-red-500 pt-2">
                 {{ error.message }}
             </p>
+            <p v-if="feedback" class="text-green-500 pt-2">
+                {{ feedback }}
+            </p>
             <button @click="fetchData" name="submit" class="w-2/5 mt-8 py-2 rounded-xl bg-gray-100 hover:bg-gray-300">Zaloguj</button>
         </div>
     </div>
@@ -19,6 +22,7 @@
 
 <script>
     import { ref } from 'vue';
+
     const axios = require('axios');
 
     export default {
