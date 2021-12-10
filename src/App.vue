@@ -17,7 +17,7 @@
             </p>
         </div>
     </nav>
-    <router-view class="pt-8"/>
+    <router-view class=""/>
     <footer id="footer" class="w-full z-30 top-0 bg-gray-600 text-white text-center p-6">
         <p class="inline text-center">Blog &copy;2021</p>
     </footer>

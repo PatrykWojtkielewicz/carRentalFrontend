@@ -4,29 +4,29 @@
             <label for="name" class="w-2/5">
                 <p class="pb-1 text-left text-2xl">Imie</p>
                 <input type="text" id="name" name="name" placeholder="Imie" class="shadow-lg text-md p-4 w-full"/>
-                <p v-if="error.data.errors.name" class="text-red-500 pt-2">
-                    *{{ error.data.errors.name[0] }}
+                <p v-if="error" class="text-red-500 pt-2">
+                    *{{ error.name[0] }}
                 </p>
             </label>
             <label for="surname" class="w-2/5 mt-4">
                 <p class="pb-1 text-left text-2xl">Nazwisko</p>
                 <input type="text" id="surname" name="surname" placeholder="Nazwisko" class="shadow-lg text-md p-4 w-full"/>
-                <p v-if="error.data.errors.surname" class="text-red-500 pt-2">
-                    *{{ error.data.errors.surname[0] }}
+                <p v-if="error" class="text-red-500 pt-2">
+                    *{{ error.surname[0] }}
                 </p>
             </label>
             <label for="email" class="w-2/5 mt-4">
                 <p class="pb-1 text-left text-2xl">Adres e-mail</p>
                 <input type="text" id="email" name="email" placeholder="E-mail" class="shadow-lg text-md p-4 w-full"/>
-                <p v-if="error.data.errors.email" class="text-red-500 pt-2">
-                    *{{ error.data.errors.email[0] }}
+                <p v-if="error" class="text-red-500 pt-2">
+                    *{{ error.email[0] }}
                 </p>
             </label>
             <label for="password" class="w-2/5 mt-4">
                 <p class="pb-1 text-left text-2xl">Hasło</p>
                 <input type="password" id="password" name="password" placeholder="********" class="shadow-lg text-md p-4 w-full"/>
-                <p v-if="error.data.errors.password" class="text-red-500 pt-2">
-                    *{{ error.data.errors.password[0] }}
+                <p v-if="error" class="text-red-500 pt-2">
+                    *{{ error.password[0] }}
                 </p>
             </label>
             <label for="confirmPassword" class="w-2/5 mt-4">
@@ -73,8 +73,8 @@
                     feedback.value = "Zarejestrowano"
                 })
                 .catch(function (err) {
-                    error.value = err.response
-                    console.log(error)
+                    error.value = err
+                    error.value = error.value.response.data.errors
                 })
             }
             return{
