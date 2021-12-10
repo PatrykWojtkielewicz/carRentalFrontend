@@ -16,11 +16,11 @@
                 <td class="pt-2">{{ user.permission_id }}</td>
             </tr>
         </table>
-        <p v-if="loading">
-            Ładowanie...
-        </p>
-        <p v-if="error">
+        <p v-else-if="error" class="flex flex-col items-center w-full">
             {{ error.message }}
+        </p>
+        <p v-else class="flex flex-col items-center w-full">
+            Ładowanie...
         </p>
     </div>
 </template>

@@ -5,6 +5,7 @@ import Register from '../views/Register.vue'
 import Users from '../views/Users.vue'
 import Logout from '../views/Logout.vue'
 import Rented from '../views/Rented.vue'
+import Rent from '../views/Rent.vue'
 
 const routes = [
     {
@@ -36,6 +37,11 @@ const routes = [
         path: '/rented',
         name: 'Rented',
         component: Rented
+    },
+    {
+        path: '/rent',
+        name: 'Rent',
+        component: Rent
     }
 ]
 
