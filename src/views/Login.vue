@@ -44,7 +44,6 @@
                     response.value = res
                     const token = response.value.data.token
                     sessionStorage.setItem('token', token)
-                    console.log(sessionStorage.getItem('token'))
                     feedback.value = "Zalogowano"
                 })
                 .catch(function (err) {

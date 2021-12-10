@@ -15,7 +15,7 @@
                 <td class="pt-2">{{ car.username }}</td>
                 <td class="pt-2">{{ car.user_id }}</td>
                 <td class="pt-2">{{ car.name }}</td>
-                <td class="pt-2">{{ car.modlel }}</td>
+                <td class="pt-2">{{ car.model }}</td>
                 <td class="pt-2">{{ car.rental_date }}</td>
                 <td class="pt-2">{{ car.return_date }}</td>
             </tr>
@@ -45,7 +45,6 @@
                 return token
             }
 
-            
             axios.get('http://127.0.0.1:8000/api/rented', {
                 headers: {
                     Accept: 'application/json',

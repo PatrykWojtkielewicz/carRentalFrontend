@@ -7,6 +7,7 @@
                 </router-link>
             </p>
             <p class="text-2xl">
+                <!-- TODO: show certain links when logged in -->
                 <router-link to="/login" class="pl-8">Login</router-link>
                 <router-link to="/register" class="pl-8">Register</router-link>
                 <router-link to="/logout" class="pl-8">Logout</router-link>
